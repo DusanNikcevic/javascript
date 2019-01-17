@@ -20,13 +20,9 @@ function easeOutQuint(t, b, c, d) {
 }
 
 function animate(startValue, endValue, durationMs) {
-  var stepCount = durationMs / 13;
-  var currentValue = startValue;
-  var valueIncrement = (endValue - startValue) / stepCount;
-
   // console.log(endValue);
   var startTime = new Date();
-  var increment = endValue - currentValue;
+  var ammountToChange = endValue - startValue;
   // console.log(window.innerWidth);
 
   var animation = setInterval(function() {
@@ -34,7 +30,7 @@ function animate(startValue, endValue, durationMs) {
     if (time < durationMs) {
       window.scrollTo(
         0,
-        easeOutQuint(time, currentValue, increment, durationMs)
+        easeOutQuint(time, startValue, ammountToChange, durationMs)
       );
       // console.log(window.pageYOffset);
     } else {
