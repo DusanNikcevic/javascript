@@ -1,16 +1,3 @@
-var inner = document.querySelector(".inner");
-var innerText = document.querySelector(".innerText");
-
-var seconds = 0;
-
-function incrementSeconds() {
-  seconds += 0.01;
-}
-
-function realAdd(add) {
-  return add * (2 - add);
-}
-
 function easeOutQuad(t, b, c, d) {
   return -c * (t /= d) * (t - 2) + b;
 }
@@ -20,10 +7,8 @@ function easeOutQuint(t, b, c, d) {
 }
 
 function animate(startValue, endValue, durationMs) {
-  // console.log(endValue);
   var startTime = new Date();
   var ammountToChange = endValue - startValue;
-  // console.log(window.innerWidth);
 
   var animation = setInterval(function() {
     var time = new Date() - startTime;
@@ -32,7 +17,6 @@ function animate(startValue, endValue, durationMs) {
         0,
         easeOutQuint(time, startValue, ammountToChange, durationMs)
       );
-      // console.log(window.pageYOffset);
     } else {
       window.scrollTo(0, endValue);
       myStopFunction(animation);
@@ -49,7 +33,6 @@ function scrollDown() {
   var bodyRect = document.body.getBoundingClientRect(),
     elemRect = element.getBoundingClientRect(),
     offset = elemRect.top - bodyRect.top;
-  //   alert("Element is " + offset + " vertical pixels from <body>");
   var scrollY = window.pageYOffset;
 
   animate(scrollY, offset - 200, 2000);
